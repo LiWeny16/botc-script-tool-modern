@@ -1,0 +1,20 @@
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import { HashRouter, Routes, Route } from 'react-router-dom'
+import './index.css'
+import './print.css'
+import App from './App.tsx'
+import ScriptRepository from './pages/ScriptRepository.tsx'
+import ScriptPreview from './pages/ScriptPreview.tsx'
+
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    <HashRouter>
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="/repo" element={<ScriptRepository />} />
+        <Route path="/repo/:scriptName" element={<ScriptPreview />} />
+      </Routes>
+    </HashRouter>
+  </StrictMode>,
+)

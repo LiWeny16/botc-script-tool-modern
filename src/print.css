@@ -1,0 +1,79 @@
+/* 打印样式 - 只打印剧本内容，全屏无白边 */
+
+@media print {
+  /* 重置所有页面边距 - 无白边 */
+
+
+  /* 重置body和html的样式 */
+  html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+  }
+
+  /* 隐藏所有内容 */
+  body * {
+    visibility: hidden !important;
+  }
+
+  /* 只显示剧本预览区域及其子元素 */
+  #script-preview,
+  #script-preview * {
+    visibility: visible !important;
+  }
+
+  /* 让剧本预览区域作为唯一可见内容 */
+  #script-preview {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+  }
+
+  /* 确保内部容器占满宽度并保持原始布局 */
+  #script-preview > div {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    gap: 2px !important;
+    align-items: stretch !important;
+  }
+
+  /* 确保背景图片和颜色正确显示 */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  /* 避免内容被分页打断 */
+  #script-preview {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* 确保图片清晰显示 */
+  img {
+    image-rendering: -webkit-optimize-contrast !important;
+  }
+
+  /* 移除MUI Container的限制 */
+  .MuiContainer-root {
+    max-width: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* 移除所有不必要的阴影效果 */
+  .MuiPaper-root {
+    box-shadow: none !important;
+  }
+}
+
